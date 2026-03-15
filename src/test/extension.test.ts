@@ -20,6 +20,18 @@ suite('Extension Test Suite', () => {
     test('空文字でエラーを投げない', () => {
       assert.doesNotThrow(() => renderMarkdown(''));
     });
+
+    test('mermaidブロックがdivに変換される', () => {
+      const html = renderMarkdown('```mermaid\ngraph TD\nA-->B\n```');
+      assert.ok(html.includes('<div class="mermaid">'), `expected mermaid div in: ${html}`);
+      assert.ok(!html.includes('```mermaid'), `raw mermaid block should not remain`);
+    });
+
+    test('通常のコードブロックはmermaidとして処理されない', () => {
+      const html = renderMarkdown('```typescript\nconst x = 1;\n```');
+      assert.ok(!html.includes('class="mermaid"'), `ts block should not become mermaid div`);
+      assert.ok(html.includes('<code'), `expected code block`);
+    });
   });
 
   suite('debounce', () => {
@@ -39,9 +51,8 @@ suite('Extension Test Suite', () => {
       let count = 0;
       const debouncedFn = debounce(() => { count++; }, 80);
       debouncedFn();
-      setTimeout(() => debouncedFn(), 40); // 40ms後にリセット
+      setTimeout(() => debouncedFn(), 40);
       setTimeout(() => {
-        // 最初の呼び出しから80ms経過しているが、2回目から80msはまだ
         assert.strictEqual(count, 0);
         done();
       }, 90);

@@ -56,7 +56,8 @@ export class PreviewManager implements vscode.Disposable {
     const timer = setTimeout(() => {
       const panel = this.panels.get(uri);
       if (panel) {
-        this.renderToPanel(panel, document);
+        const bodyHtml = renderMarkdown(document.getText());
+        panel.webview.postMessage({ type: 'update', bodyHtml });
       }
       this.debounceTimers.delete(uri);
     }, DEBOUNCE_WAIT_MS);

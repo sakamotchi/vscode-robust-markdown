@@ -122,15 +122,17 @@ export function debounce(fn: () => void, wait: number): () => void
 Webview に渡す完全な HTML 文字列を生成する。
 
 ```typescript
-export function buildHtml(bodyHtml: string, webview: vscode.Webview): string
+export function buildHtml(bodyHtml: string, webview: vscode.Webview, extensionUri: vscode.Uri): string
 ```
 
 **含まれる要素**
 
-- CSP — `script-src` は `vscode-resource:` のみ許可
+- CSP — nonce ベース（`script-src 'nonce-{random}' ${webview.cspSource}`）
 - `dist/mermaid.min.js` を `webview.asWebviewUri()` で参照
-- mermaid の初期化スクリプト（`mermaid.initialize()` + `mermaid.run()`）
-- 基本スタイル
+- Mermaid の初期化スクリプト（`mermaid.initialize()` + `mermaid.run({ suppressErrors: true })`）
+- ライト/ダーク テーマ切り替えボタン（sticky バー）
+- VSCode のカラーテーマ種別（Dark/Light）に基づく初期モード設定
+- 基本スタイル（`body.vr-dark` / `body.vr-light` クラス切り替え方式）
 
 ---
 
@@ -153,7 +155,9 @@ export function buildHtml(bodyHtml: string, webview: vscode.Webview): string
 onDidChangeTextDocument / onDidSaveTextDocument
   → 対応パネルが panels マップに存在するか確認
   → 存在する場合のみ PreviewManager.updatePreview(document)
-  → debounce(1000ms) 経由で renderToPanel() を呼び出し
+  → debounce(1000ms) 経由で panel.webview.postMessage({ type: 'update', bodyHtml }) を送信
+  → Webview 側の message リスナーが #content の innerHTML のみ差し替え・Mermaid再描画
+  ※ webview.html を差し替えないためユーザーのテーマ切り替え状態が維持される
 ```
 
 ### 4.3 パネル破棄
