@@ -5,7 +5,7 @@ export function activate(context: vscode.ExtensionContext) {
   const previewManager = new PreviewManager(context.extensionUri);
   context.subscriptions.push(previewManager);
 
-  const disposable = vscode.commands.registerCommand('robustMarkdown.openPreview', () => {
+  const openPreviewCmd = vscode.commands.registerCommand('robustMarkdown.openPreview', () => {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
       vscode.window.showErrorMessage('No active editor');
@@ -14,7 +14,15 @@ export function activate(context: vscode.ExtensionContext) {
     previewManager.openPreview(editor.document);
   });
 
-  context.subscriptions.push(disposable);
+  const onChangeListener = vscode.workspace.onDidChangeTextDocument((e) => {
+    previewManager.updatePreview(e.document);
+  });
+
+  const onSaveListener = vscode.workspace.onDidSaveTextDocument((document) => {
+    previewManager.updatePreview(document);
+  });
+
+  context.subscriptions.push(openPreviewCmd, onChangeListener, onSaveListener);
 }
 
 export function deactivate() {}
