@@ -1,26 +1,28 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { PreviewManager } from './previewManager';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+  const previewManager = new PreviewManager(context.extensionUri);
+  context.subscriptions.push(previewManager);
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "vscode-robust-markdown" is now active!');
+  const openPreviewCmd = vscode.commands.registerCommand('robustMarkdown.openPreview', () => {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) {
+      vscode.window.showErrorMessage('No active editor');
+      return;
+    }
+    previewManager.openPreview(editor.document);
+  });
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('vscode-robust-markdown.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from Robust Markdown!');
-	});
+  const onChangeListener = vscode.workspace.onDidChangeTextDocument((e) => {
+    previewManager.updatePreview(e.document);
+  });
 
-	context.subscriptions.push(disposable);
+  const onSaveListener = vscode.workspace.onDidSaveTextDocument((document) => {
+    previewManager.updatePreview(document);
+  });
+
+  context.subscriptions.push(openPreviewCmd, onChangeListener, onSaveListener);
 }
 
-// This method is called when your extension is deactivated
 export function deactivate() {}

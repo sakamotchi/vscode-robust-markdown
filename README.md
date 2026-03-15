@@ -1,71 +1,36 @@
-# vscode-robust-markdown README
+# AI Safe Markdown Preview
 
-This is the README for your extension "vscode-robust-markdown". After writing up a brief description, we recommend including the following sections.
+AIコーディングエージェント（Claude Codeなど）による高頻度ファイル更新に対して堅牢なMarkdownプレビューVSCode拡張機能です。
 
-## Features
+## 機能
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+### Markdownプレビュー
 
-For example if there is an image subfolder under your extension project workspace:
+エディタータブ右端のアイコン、または右クリックメニューからプレビューを起動できます。プレビューはVSCodeのネイティブタブとして開き、複数ファイルを同時に表示できます。
 
-\!\[feature X\]\(images/feature-x.png\)
+### AI更新耐性
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+AIエージェントがMarkdownファイルを高頻度で書き換えても、1000msのデバウンス処理によりプレビューがクラッシュしません。編集中・保存時の両方でプレビューが自動更新されます。
 
-## Requirements
+### Mermaid図表サポート
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+` ```mermaid ``` ` ブロックをSVG図表としてレンダリングします。構文エラーのある図は該当ブロック内にエラー表示され、他の図・本文には影響しません。mermaid.jsはバンドル済みのためオフライン環境でも動作します。
 
-## Extension Settings
+### テーマ切り替え
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+プレビュー上部のボタンでライト/ダークモードを切り替えられます。初期状態はVSCodeのカラーテーマに自動連動します。編集・保存による更新後もテーマ設定が維持されます。
 
-For example:
+## 使い方
 
-This extension contributes the following settings:
+1. Markdownファイルをエディターで開く
+2. エディタータブ右端の `$(preview)` アイコンをクリック、または右クリック →「Open Robust Markdown Preview」を選択
+3. プレビューパネルが横に開きます
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## 動作要件
 
-## Known Issues
+- VSCode 1.110.0 以上
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+## 既知の制限
 
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+- 設定によるデバウンス時間のカスタマイズは未対応（固定1000ms）
+- テーマ切り替え状態はプレビューを閉じると初期値にリセットされます
