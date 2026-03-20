@@ -26,6 +26,7 @@ export class PreviewManager implements vscode.Disposable {
       {
         enableScripts: true,
         localResourceRoots: [vscode.Uri.joinPath(this.extensionUri, 'dist')],
+        retainContextWhenHidden: true,
       }
     );
 
