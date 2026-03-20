@@ -1,22 +1,31 @@
 {
   "name": "vscode-robust-markdown",
-  "displayName": "Robust Markdown",
-  "description": "AI-safe Markdown preview with Mermaid support",
-  "version": "0.0.1",
+  "displayName": "AI Safe Markdown Preview",
+  "description": "AI-safe Markdown preview with Mermaid support and dark/light theme toggle",
+  "version": "0.1.0",
+  "publisher": "sakamoto-yoshitaka",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sakamotchi/vscode-robust-markdown"
+  },
+  "license": "MIT",
+  "categories": ["Visualization", "Other"],
+  "keywords": ["markdown", "preview", "mermaid", "ai", "theme"],
   "engines": {
     "vscode": "^1.110.0"
   },
-  "categories": [
-    "Other"
-  ],
   "activationEvents": [],
   "main": "./dist/extension.js",
+  "icon": "icon.png",
   "contributes": {
     "commands": [
       {
         "command": "robustMarkdown.openPreview",
         "title": "Open Robust Markdown Preview",
-        "icon": "$(preview)"
+        "icon": {
+          "light": "icon.png",
+          "dark": "icon.png"
+        }
       }
     ],
     "menus": {

@@ -13,3 +13,6 @@ vsc-extension-quickstart.md
 **/*.map
 **/*.ts
 **/.vscode-test.*
+.obsidian/**
+.claude/**
+CLAUDE.md
