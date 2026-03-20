@@ -6,25 +6,25 @@ All notable changes to the "vscode-robust-markdown" extension will be documented
 
 ### Added
 
-- コードブロックの言語別シンタックスハイライト（highlight.js・dark/lightテーマ対応）
-- チェックボックス（`- [ ]` / `- [x]`）のクリック編集対応（プレビューから直接ソースファイルを更新）
+- Syntax highlighting for code blocks based on programming language (highlight.js, dark/light theme aware)
+- Interactive checkbox editing — click checkboxes in the preview to toggle `[ ]` / `[x]` directly in the source file
 
 ### Fixed
 
-- 別タブに切り替えて戻るとライト/ダークテーマがリセットされる問題を修正
-- チェックボックスが `[]` テキストとして表示される問題を修正
+- Theme (dark/light) reset to default when switching back to the preview tab
+- Checkboxes rendered as plain `[]` text instead of actual checkbox inputs
 
 ## [0.1.0] - 2026-03-15
 
 ### Added
 
-- Markdownプレビュー基盤（WebviewPanel・`marked` によるHTMLレンダリング）
-- エディタータブ右端アイコンからのプレビュー起動
-- 右クリックコンテキストメニューからのプレビュー起動
-- 同一ファイルの重複パネル防止
-- 編集・保存イベントによるプレビュー自動更新（1000msデバウンス）
-- AIエージェントの高頻度更新に対するクラッシュ耐性
-- Markdownパースエラー時のインライン表示・パネル維持
-- Mermaid図表レンダリング（バンドル済み・オフライン対応）
-- Mermaid構文エラーの図ごと隔離
-- ライト/ダークテーマ切り替えボタン（VSCodeテーマ自動連動）
+- Markdown preview panel (WebviewPanel + `marked` HTML rendering)
+- Open preview from editor title bar icon
+- Open preview from right-click context menu
+- Prevent duplicate panels for the same file
+- Auto-update preview on edit and save with 1000ms debounce
+- Crash resilience against high-frequency writes by AI coding agents
+- Graceful inline display of Markdown parse errors without closing the panel
+- Mermaid diagram rendering (bundled, works offline)
+- Per-diagram error isolation for Mermaid syntax errors
+- Dark/light theme toggle button with automatic sync to VS Code theme

@@ -1,36 +1,44 @@
 # AI Safe Markdown Preview
 
-AIコーディングエージェント（Claude Codeなど）による高頻度ファイル更新に対して堅牢なMarkdownプレビューVSCode拡張機能です。
+A VS Code extension providing a robust Markdown preview designed for high-frequency file updates by AI coding agents (e.g., Claude Code).
 
-## 機能
+## Features
 
-### Markdownプレビュー
+### Markdown Preview
 
-エディタータブ右端のアイコン、または右クリックメニューからプレビューを起動できます。プレビューはVSCodeのネイティブタブとして開き、複数ファイルを同時に表示できます。
+Open a preview from the editor title bar icon or the right-click context menu. Each file opens in its own native VS Code tab, allowing multiple files to be previewed simultaneously.
 
-### AI更新耐性
+### Syntax Highlighting
 
-AIエージェントがMarkdownファイルを高頻度で書き換えても、1000msのデバウンス処理によりプレビューがクラッシュしません。編集中・保存時の両方でプレビューが自動更新されます。
+Code blocks are highlighted based on programming language using highlight.js. Highlighting adapts automatically to the current dark/light theme.
 
-### Mermaid図表サポート
+### Interactive Checkboxes
 
-` ```mermaid ``` ` ブロックをSVG図表としてレンダリングします。構文エラーのある図は該当ブロック内にエラー表示され、他の図・本文には影響しません。mermaid.jsはバンドル済みのためオフライン環境でも動作します。
+Click checkboxes in the preview to toggle `[ ]` / `[x]` directly in the source Markdown file — no need to edit the raw text manually.
 
-### テーマ切り替え
+### AI Update Resilience
 
-プレビュー上部のボタンでライト/ダークモードを切り替えられます。初期状態はVSCodeのカラーテーマに自動連動します。編集・保存による更新後もテーマ設定が維持されます。
+A 1000ms debounce on all update events prevents crashes even when an AI agent rewrites the file at high frequency. The preview auto-updates on both edit and save.
 
-## 使い方
+### Mermaid Diagram Support
 
-1. Markdownファイルをエディターで開く
-2. エディタータブ右端の `$(preview)` アイコンをクリック、または右クリック →「Open Robust Markdown Preview」を選択
-3. プレビューパネルが横に開きます
+Renders ` ```mermaid ``` ` blocks as SVG diagrams. Syntax errors are isolated per diagram and do not affect the rest of the preview. mermaid.js is bundled so it works offline.
 
-## 動作要件
+### Theme Toggle
 
-- VSCode 1.110.0 以上
+Switch between dark and light mode using the button at the top of the preview. The initial mode syncs automatically with your VS Code color theme and is preserved across content updates.
 
-## 既知の制限
+## Usage
 
-- 設定によるデバウンス時間のカスタマイズは未対応（固定1000ms）
-- テーマ切り替え状態はプレビューを閉じると初期値にリセットされます
+1. Open a Markdown file in the editor
+2. Click the icon at the right end of the editor title bar, or right-click → **Open Robust Markdown Preview**
+3. The preview panel opens beside the editor
+
+## Requirements
+
+- VS Code 1.110.0 or later
+
+## Known Limitations
+
+- Debounce duration is fixed at 1000ms (not configurable)
+- Theme preference resets when the preview panel is closed
