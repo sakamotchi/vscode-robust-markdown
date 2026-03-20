@@ -13,8 +13,10 @@ marked.use(markedHighlight({
 export function renderMarkdown(source: string): string {
   try {
     const preprocessed = preprocessMermaid(source);
-    const result = marked.parse(preprocessed);
-    return result as string;
+    const html = marked.parse(preprocessed) as string;
+    return html
+      .replace(/<input disabled="" type="checkbox">/g, '<input type="checkbox">')
+      .replace(/<input checked="" disabled="" type="checkbox">/g, '<input checked="" type="checkbox">');
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     return `<p class="error">Markdown parse error: ${escapeHtml(message)}</p>`;

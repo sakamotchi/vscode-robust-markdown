@@ -74,6 +74,7 @@ export function buildHtml(
     blockquote { margin: 0; padding: 0 1em; }
     hr { border: none; border-top: 1px solid; }
     .mermaid { margin: 1em 0; }
+    ul li input[type="checkbox"] { margin-right: 4px; vertical-align: middle; }
     #theme-bar {
       position: sticky;
       top: 0;
@@ -188,6 +189,7 @@ export function buildHtml(
 </div>
 <div id="content">${bodyHtml}</div>
 <script nonce="${nonce}">
+  var vscode = acquireVsCodeApi();
   var currentMode = '${initialMode}';
 
   var mermaidSources = [];
@@ -227,6 +229,15 @@ export function buildHtml(
       document.getElementById('content').innerHTML = event.data.bodyHtml;
       saveMermaidSources();
       renderMermaid();
+    }
+  });
+
+  document.getElementById('content').addEventListener('click', function(event) {
+    var target = event.target;
+    if (target.tagName === 'INPUT' && target.type === 'checkbox') {
+      var checkboxes = document.querySelectorAll('#content input[type="checkbox"]');
+      var index = Array.from(checkboxes).indexOf(target);
+      vscode.postMessage({ type: 'toggleCheckbox', index: index, checked: target.checked });
     }
   });
 

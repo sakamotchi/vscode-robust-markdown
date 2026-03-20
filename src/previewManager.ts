@@ -30,6 +30,27 @@ export class PreviewManager implements vscode.Disposable {
       }
     );
 
+    panel.webview.onDidReceiveMessage(async (message) => {
+      if (message.type !== 'toggleCheckbox') { return; }
+      const doc = await vscode.workspace.openTextDocument(vscode.Uri.parse(uri));
+      const text = doc.getText();
+      const pattern = /^(\s*[-*+]\s+)\[([ x])\]/gm;
+      let match: RegExpExecArray | null;
+      let count = 0;
+      while ((match = pattern.exec(text)) !== null) {
+        if (count === message.index) {
+          const newChar = message.checked ? 'x' : ' ';
+          const offset = match.index + match[1].length + 1;
+          const pos = doc.positionAt(offset);
+          const edit = new vscode.WorkspaceEdit();
+          edit.replace(doc.uri, new vscode.Range(pos, pos.translate(0, 1)), newChar);
+          await vscode.workspace.applyEdit(edit);
+          break;
+        }
+        count++;
+      }
+    });
+
     panel.onDidDispose(() => {
       const timer = this.debounceTimers.get(uri);
       if (timer !== undefined) {

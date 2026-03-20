@@ -2,6 +2,18 @@
 
 All notable changes to the "vscode-robust-markdown" extension will be documented in this file.
 
+## [0.3.0] - 2026-03-20
+
+### Added
+
+- コードブロックの言語別シンタックスハイライト（highlight.js・dark/lightテーマ対応）
+- チェックボックス（`- [ ]` / `- [x]`）のクリック編集対応（プレビューから直接ソースファイルを更新）
+
+### Fixed
+
+- 別タブに切り替えて戻るとライト/ダークテーマがリセットされる問題を修正
+- チェックボックスが `[]` テキストとして表示される問題を修正
+
 ## [0.1.0] - 2026-03-15
 
 ### Added
