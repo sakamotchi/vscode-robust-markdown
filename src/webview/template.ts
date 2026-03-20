@@ -44,8 +44,8 @@ export function buildHtml(
       color: #d4d4d4;
       background-color: #1e1e1e;
     }
-    body.vr-dark code { background: rgba(255,255,255,0.1); }
-    body.vr-dark pre { background: rgba(255,255,255,0.08); }
+    body.vr-dark code { background: rgba(255,255,255,0.1); color: #d4d4d4; }
+    body.vr-dark pre { background: rgba(255,255,255,0.08); color: #d4d4d4; }
     body.vr-dark th { background: rgba(255,255,255,0.06); }
     body.vr-dark th, body.vr-dark td { border-color: #444; }
     body.vr-dark blockquote { border-left-color: #555; color: #aaa; }
@@ -54,8 +54,8 @@ export function buildHtml(
       color: #1e1e1e;
       background-color: #ffffff;
     }
-    body.vr-light code { background: rgba(0,0,0,0.06); }
-    body.vr-light pre { background: rgba(0,0,0,0.05); }
+    body.vr-light code { background: rgba(0,0,0,0.06); color: #24292e; }
+    body.vr-light pre { background: rgba(0,0,0,0.05); color: #24292e; }
     body.vr-light th { background: rgba(0,0,0,0.04); }
     body.vr-light th, body.vr-light td { border-color: #ccc; }
     body.vr-light blockquote { border-left-color: #ccc; color: #555; }
@@ -66,7 +66,8 @@ export function buildHtml(
       border-radius: 3px;
     }
     pre { padding: 1em; border-radius: 4px; overflow-x: auto; }
-    pre code { background: none; padding: 0; }
+    body.vr-light pre code,
+    body.vr-dark pre code { background: none; padding: 0; }
     .error { color: #f44747; border: 1px solid currentColor; padding: 0.5em 1em; border-radius: 4px; }
     img { max-width: 100%; }
     table { border-collapse: collapse; width: 100%; margin: 1em 0; }

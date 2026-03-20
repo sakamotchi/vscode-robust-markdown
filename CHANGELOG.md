@@ -2,6 +2,13 @@
 
 All notable changes to the "vscode-robust-markdown" extension will be documented in this file.
 
+## [0.3.2] - 2026-03-20
+
+### Fixed
+
+- Code block text color invisible in light mode when VS Code is using a dark theme
+- Inconsistent background color between code text area and padding inside code blocks
+
 ## [0.3.0] - 2026-03-20
 
 ### Added
