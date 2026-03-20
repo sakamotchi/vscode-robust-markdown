@@ -71,7 +71,7 @@ export function buildHtml(
     .error { color: #f44747; border: 1px solid currentColor; padding: 0.5em 1em; border-radius: 4px; }
     img { max-width: 100%; }
     table { border-collapse: collapse; width: 100%; margin: 1em 0; }
-    th, td { padding: 6px 12px; }
+    th, td { padding: 6px 12px; border: 1px solid; }
     blockquote { margin: 0; padding: 0 1em; }
     hr { border: none; border-top: 1px solid; }
     .mermaid { margin: 1em 0; }

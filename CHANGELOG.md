@@ -2,6 +2,12 @@
 
 All notable changes to the "vscode-robust-markdown" extension will be documented in this file.
 
+## [0.3.3] - 2026-03-20
+
+### Fixed
+
+- Table borders now visible (dark/light theme aware)
+
 ## [0.3.2] - 2026-03-20
 
 ### Fixed
