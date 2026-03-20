@@ -2,7 +2,7 @@
   "name": "vscode-robust-markdown",
   "displayName": "AI Safe Markdown Preview",
   "description": "AI-safe Markdown preview with Mermaid support and dark/light theme toggle",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "publisher": "sakamoto-yoshitaka",
   "repository": {
     "type": "git",
