@@ -97,6 +97,88 @@ export function buildHtml(
     body.vr-dark #theme-toggle { background: #2d2d2d; color: #ccc; border-color: #555; }
     body.vr-light #theme-toggle { background: #f5f5f5; color: #333; border-color: #bbb; }
     #theme-toggle:hover { opacity: 0.8; }
+
+    /* highlight.js – dark theme (GitHub Dark) */
+    body.vr-dark .hljs { color: #adbac7; }
+    body.vr-dark .hljs-doctag,
+    body.vr-dark .hljs-keyword,
+    body.vr-dark .hljs-template-tag,
+    body.vr-dark .hljs-template-variable,
+    body.vr-dark .hljs-type,
+    body.vr-dark .hljs-variable.language_ { color: #f47067; }
+    body.vr-dark .hljs-title,
+    body.vr-dark .hljs-title.class_,
+    body.vr-dark .hljs-title.class_.inherited__,
+    body.vr-dark .hljs-title.function_ { color: #dcbdfb; }
+    body.vr-dark .hljs-attr,
+    body.vr-dark .hljs-attribute,
+    body.vr-dark .hljs-literal,
+    body.vr-dark .hljs-meta,
+    body.vr-dark .hljs-number,
+    body.vr-dark .hljs-operator,
+    body.vr-dark .hljs-selector-attr,
+    body.vr-dark .hljs-selector-class,
+    body.vr-dark .hljs-selector-id,
+    body.vr-dark .hljs-variable { color: #6cb6ff; }
+    body.vr-dark .hljs-string,
+    body.vr-dark .hljs-regexp { color: #96d0ff; }
+    body.vr-dark .hljs-built_in,
+    body.vr-dark .hljs-symbol { color: #f69d50; }
+    body.vr-dark .hljs-comment,
+    body.vr-dark .hljs-code,
+    body.vr-dark .hljs-formula { color: #768390; }
+    body.vr-dark .hljs-name,
+    body.vr-dark .hljs-quote,
+    body.vr-dark .hljs-selector-pseudo,
+    body.vr-dark .hljs-selector-tag { color: #8ddb8c; }
+    body.vr-dark .hljs-subst { color: #adbac7; }
+    body.vr-dark .hljs-section { color: #316dca; font-weight: bold; }
+    body.vr-dark .hljs-bullet { color: #eac55f; }
+    body.vr-dark .hljs-emphasis { color: #adbac7; font-style: italic; }
+    body.vr-dark .hljs-strong { color: #adbac7; font-weight: bold; }
+    body.vr-dark .hljs-addition { color: #b4f1b4; background-color: #1b4721; }
+    body.vr-dark .hljs-deletion { color: #ffd8d3; background-color: #78191b; }
+
+    /* highlight.js – light theme (GitHub) */
+    body.vr-light .hljs { color: #24292e; }
+    body.vr-light .hljs-doctag,
+    body.vr-light .hljs-keyword,
+    body.vr-light .hljs-template-tag,
+    body.vr-light .hljs-template-variable,
+    body.vr-light .hljs-type,
+    body.vr-light .hljs-variable.language_ { color: #d73a49; }
+    body.vr-light .hljs-title,
+    body.vr-light .hljs-title.class_,
+    body.vr-light .hljs-title.class_.inherited__,
+    body.vr-light .hljs-title.function_ { color: #6f42c1; }
+    body.vr-light .hljs-attr,
+    body.vr-light .hljs-attribute,
+    body.vr-light .hljs-literal,
+    body.vr-light .hljs-meta,
+    body.vr-light .hljs-number,
+    body.vr-light .hljs-operator,
+    body.vr-light .hljs-selector-attr,
+    body.vr-light .hljs-selector-class,
+    body.vr-light .hljs-selector-id,
+    body.vr-light .hljs-variable { color: #005cc5; }
+    body.vr-light .hljs-string,
+    body.vr-light .hljs-regexp { color: #032f62; }
+    body.vr-light .hljs-built_in,
+    body.vr-light .hljs-symbol { color: #e36209; }
+    body.vr-light .hljs-comment,
+    body.vr-light .hljs-code,
+    body.vr-light .hljs-formula { color: #6a737d; }
+    body.vr-light .hljs-name,
+    body.vr-light .hljs-quote,
+    body.vr-light .hljs-selector-pseudo,
+    body.vr-light .hljs-selector-tag { color: #22863a; }
+    body.vr-light .hljs-subst { color: #24292e; }
+    body.vr-light .hljs-section { color: #005cc5; font-weight: bold; }
+    body.vr-light .hljs-bullet { color: #735c0f; }
+    body.vr-light .hljs-emphasis { color: #24292e; font-style: italic; }
+    body.vr-light .hljs-strong { color: #24292e; font-weight: bold; }
+    body.vr-light .hljs-addition { color: #22863a; background-color: #f0fff4; }
+    body.vr-light .hljs-deletion { color: #b31d28; background-color: #ffeef0; }
   </style>
   <script nonce="${nonce}" src="${mermaidUri}"></script>
 </head>

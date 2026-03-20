@@ -9,8 +9,17 @@
     "url": "https://github.com/sakamotchi/vscode-robust-markdown"
   },
   "license": "MIT",
-  "categories": ["Visualization", "Other"],
-  "keywords": ["markdown", "preview", "mermaid", "ai", "theme"],
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "markdown",
+    "preview",
+    "mermaid",
+    "ai",
+    "theme"
+  ],
   "engines": {
     "vscode": "^1.110.0"
   },
@@ -70,7 +79,9 @@
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
+    "highlight.js": "^11.11.1",
     "marked": "^17.0.4",
+    "marked-highlight": "^2.2.3",
     "mermaid": "^11.13.0"
   }
 }
