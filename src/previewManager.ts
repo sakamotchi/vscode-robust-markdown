@@ -60,6 +60,8 @@ export class PreviewManager implements vscode.Disposable {
       this.panels.delete(uri);
     });
 
+    panel.iconPath = vscode.Uri.joinPath(this.extensionUri, 'icon.png');
+
     this.panels.set(uri, panel);
     this.renderToPanel(panel, document);
   }
