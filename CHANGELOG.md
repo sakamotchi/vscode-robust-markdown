@@ -2,6 +2,12 @@
 
 All notable changes to the "vscode-robust-markdown" extension will be documented in this file.
 
+## [0.3.4] - 2026-03-26
+
+### Added
+
+- Preview tab now shows the extension icon
+
 ## [0.3.3] - 2026-03-20
 
 ### Fixed
