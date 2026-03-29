@@ -2,6 +2,13 @@
 
 All notable changes to the "vscode-robust-markdown" extension will be documented in this file.
 
+## [0.3.5] - 2026-03-29
+
+### Fixed
+
+- Improved readability of text in elements with dark inline background colors in light mode
+- Fixed a SyntaxError in the webview script caused by regex containing `\(` inside a template literal (which also caused the dark/light toggle button to disappear)
+
 ## [0.3.4] - 2026-03-26
 
 ### Added

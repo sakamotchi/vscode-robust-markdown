@@ -213,8 +213,30 @@ export function buildHtml(
   }
 
   function updateToggleLabel() {
-    document.getElementById('theme-toggle').textContent =
-      currentMode === 'dark' ? '☀ ライト' : '☾ ダーク';
+    var btn = document.getElementById('theme-toggle');
+    if (btn) {
+      btn.textContent = currentMode === 'dark' ? '☀ ライト' : '☾ ダーク';
+    }
+  }
+
+  // インラインスタイルで暗い背景色が設定された要素のテキストをライトモード時に読みやすくする
+  function fixInlineBackgroundContrast() {
+    if (currentMode !== 'light') return;
+    document.querySelectorAll('#content [style]').forEach(function(el) {
+      var inlineStyle = el.getAttribute('style') || '';
+      if (!inlineStyle.includes('background')) return;
+      var bg = window.getComputedStyle(el).backgroundColor;
+      var paren = bg.indexOf('(');
+      if (paren === -1) return;
+      var parts = bg.slice(paren + 1).split(',');
+      if (parts.length < 3) return;
+      var r = parseInt(parts[0], 10), g = parseInt(parts[1], 10), b = parseInt(parts[2], 10);
+      if (isNaN(r) || isNaN(g) || isNaN(b)) return;
+      var luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+      if (luminance < 0.4 && !inlineStyle.includes('color')) {
+        el.style.color = '#e0e0e0';
+      }
+    });
   }
 
   document.getElementById('theme-toggle').addEventListener('click', function() {
@@ -222,6 +244,7 @@ export function buildHtml(
     document.body.className = 'vr-' + currentMode;
     updateToggleLabel();
     renderMermaid();
+    fixInlineBackgroundContrast();
   });
 
   // 差分更新: テーマを保持したままコンテンツのみ差し替え
@@ -230,6 +253,7 @@ export function buildHtml(
       document.getElementById('content').innerHTML = event.data.bodyHtml;
       saveMermaidSources();
       renderMermaid();
+      fixInlineBackgroundContrast();
     }
   });
 
@@ -245,6 +269,7 @@ export function buildHtml(
   saveMermaidSources();
   updateToggleLabel();
   renderMermaid();
+  fixInlineBackgroundContrast();
 </script>
 </body>
 </html>`;
