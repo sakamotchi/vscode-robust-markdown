@@ -197,15 +197,26 @@ export function buildHtml(
 
   function saveMermaidSources() {
     mermaidSources = [];
+    
+    // markedが生成した <pre><code class="language-mermaid"> を <div class="mermaid"> に変換
+    document.querySelectorAll('pre code.language-mermaid').forEach(function(codeEl) {
+      var pre = codeEl.parentNode;
+      var div = document.createElement('div');
+      div.className = 'mermaid';
+      // textContentを使用することでエスケープされた文字列（&lt;など）を元の文字（<など）として扱う
+      div.textContent = codeEl.textContent;
+      pre.parentNode.replaceChild(div, pre);
+    });
+
     document.querySelectorAll('.mermaid').forEach(function(el, i) {
-      mermaidSources[i] = el.innerHTML;
+      mermaidSources[i] = el.textContent;
     });
   }
 
   function renderMermaid() {
     var mermaidTheme = currentMode === 'dark' ? 'dark' : 'default';
     document.querySelectorAll('.mermaid').forEach(function(el, i) {
-      el.innerHTML = mermaidSources[i];
+      el.textContent = mermaidSources[i];
       el.removeAttribute('data-processed');
     });
     mermaid.initialize({ startOnLoad: false, theme: mermaidTheme });

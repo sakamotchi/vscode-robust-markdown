@@ -2,6 +2,13 @@
 
 All notable changes to the "vscode-robust-markdown" extension will be documented in this file.
 
+## [0.3.6] - 2026-04-02
+
+### Changed
+
+- Removed Mermaid preprocessing step — marked now handles Mermaid code blocks directly, eliminating regex-based preprocessing issues (e.g., `\r\n` line ending mismatch)
+- Webview now converts `<pre><code class="language-mermaid">` to `<div class="mermaid">` at render time, using `textContent` to correctly decode HTML entities before passing source to Mermaid
+
 ## [0.3.5] - 2026-03-29
 
 ### Fixed

@@ -12,8 +12,7 @@ marked.use(markedHighlight({
 
 export function renderMarkdown(source: string): string {
   try {
-    const preprocessed = preprocessMermaid(source);
-    const html = marked.parse(preprocessed) as string;
+    const html = marked.parse(source) as string;
     return html
       .replace(/<input disabled="" type="checkbox">/g, '<input type="checkbox">')
       .replace(/<input checked="" disabled="" type="checkbox">/g, '<input checked="" type="checkbox">');
@@ -21,13 +20,6 @@ export function renderMarkdown(source: string): string {
     const message = err instanceof Error ? err.message : String(err);
     return `<p class="error">Markdown parse error: ${escapeHtml(message)}</p>`;
   }
-}
-
-function preprocessMermaid(source: string): string {
-  return source.replace(
-    /```mermaid\n([\s\S]*?)```/g,
-    (_match, code) => `<div class="mermaid">${escapeHtml(code.trim())}</div>`
-  );
 }
 
 function escapeHtml(text: string): string {
