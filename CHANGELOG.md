@@ -2,6 +2,12 @@
 
 All notable changes to the "vscode-robust-markdown" extension will be documented in this file.
 
+## [0.3.7] - 2026-04-05
+
+### Fixed
+
+- Improved blockquote styling in light mode: added light gray background (`#f6f8fa`), blue left border (`#0969da`), and softer text color for better readability
+
 ## [0.3.6] - 2026-04-02
 
 ### Changed

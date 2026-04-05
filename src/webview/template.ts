@@ -48,7 +48,7 @@ export function buildHtml(
     body.vr-dark pre { background: rgba(255,255,255,0.08); color: #d4d4d4; }
     body.vr-dark th { background: rgba(255,255,255,0.06); }
     body.vr-dark th, body.vr-dark td { border-color: #444; }
-    body.vr-dark blockquote { border-left-color: #555; color: #aaa; }
+    body.vr-dark blockquote { border-left-color: #555; color: #aaa; background: rgba(255,255,255,0.04); }
     body.vr-dark hr { border-top-color: #444; }
     body.vr-light {
       color: #1e1e1e;
@@ -58,7 +58,7 @@ export function buildHtml(
     body.vr-light pre { background: rgba(0,0,0,0.05); color: #24292e; }
     body.vr-light th { background: rgba(0,0,0,0.04); }
     body.vr-light th, body.vr-light td { border-color: #ccc; }
-    body.vr-light blockquote { border-left-color: #ccc; color: #555; }
+    body.vr-light blockquote { border-left-color: #0969da; color: #57606a; background: #f6f8fa; }
     body.vr-light hr { border-top-color: #ddd; }
     code {
       font-family: 'SFMono-Regular', Consolas, monospace;
@@ -72,7 +72,7 @@ export function buildHtml(
     img { max-width: 100%; }
     table { border-collapse: collapse; width: 100%; margin: 1em 0; }
     th, td { padding: 6px 12px; border: 1px solid; }
-    blockquote { margin: 0; padding: 0 1em; }
+    blockquote { margin: 0.5em 0; padding: 0.5em 1em; border-left: 4px solid; border-radius: 0 4px 4px 0; }
     hr { border: none; border-top: 1px solid; }
     .mermaid { margin: 1em 0; }
     ul li input[type="checkbox"] { margin-right: 4px; vertical-align: middle; }
