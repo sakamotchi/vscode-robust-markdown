@@ -2,6 +2,12 @@
 
 All notable changes to the "vscode-robust-markdown" extension will be documented in this file.
 
+## [0.3.8] - 2026-04-09
+
+### Fixed
+
+- Checkbox toggle now auto-saves the file immediately, preventing conflicts when AI agents edit the file concurrently
+
 ## [0.3.7] - 2026-04-05
 
 ### Fixed

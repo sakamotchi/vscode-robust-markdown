@@ -45,6 +45,7 @@ export class PreviewManager implements vscode.Disposable {
           const edit = new vscode.WorkspaceEdit();
           edit.replace(doc.uri, new vscode.Range(pos, pos.translate(0, 1)), newChar);
           await vscode.workspace.applyEdit(edit);
+          await doc.save();
           break;
         }
         count++;
